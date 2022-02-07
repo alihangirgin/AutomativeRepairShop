@@ -10,6 +10,6 @@ namespace AutomativeRepairShop.Core.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Entity Add(TEntity entity);
+        TEntity Add(TEntity entity);
     }
 }
