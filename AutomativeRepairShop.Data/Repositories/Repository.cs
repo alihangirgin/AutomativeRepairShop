@@ -28,6 +28,11 @@ namespace AutomativeRepairShop.Data.Repositories
             return entity;
         }
 
+        public IEnumerable<TEntity> GetAll()
+        {
+            return _dbSet.Where(x=>x.DeleteDate !=null).ToList();
+        }
+
 
     }
 }

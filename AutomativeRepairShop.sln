@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomativeRepairShop.Core",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomativeRepairShop.Data", "AutomativeRepairShop.Data\AutomativeRepairShop.Data.csproj", "{48056691-E33E-47E1-B8E5-B554E05D8CBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomativeRepairShop.Business", "AutomativeRepairShop.Business\AutomativeRepairShop.Business.csproj", "{5D314805-2D67-47F2-BC00-1A03A80D8F99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomativeRepairShop.Web", "AutomativeRepairShop.Web\AutomativeRepairShop.Web.csproj", "{0B3C0B9E-AFB3-4073-8F88-970F1A7B1052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{48056691-E33E-47E1-B8E5-B554E05D8CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48056691-E33E-47E1-B8E5-B554E05D8CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48056691-E33E-47E1-B8E5-B554E05D8CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D314805-2D67-47F2-BC00-1A03A80D8F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D314805-2D67-47F2-BC00-1A03A80D8F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D314805-2D67-47F2-BC00-1A03A80D8F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D314805-2D67-47F2-BC00-1A03A80D8F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3C0B9E-AFB3-4073-8F88-970F1A7B1052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3C0B9E-AFB3-4073-8F88-970F1A7B1052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3C0B9E-AFB3-4073-8F88-970F1A7B1052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3C0B9E-AFB3-4073-8F88-970F1A7B1052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
