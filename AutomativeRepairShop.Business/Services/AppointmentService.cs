@@ -29,5 +29,34 @@ namespace AutomativeRepairShop.Business.Services
             return appointmentListResource;
         }
 
+        public AppointmentDto AddAppointment(AppointmentDto newAppointment)
+        {
+            var newAppointmentEntity = _mapper.Map<AppointmentDto, Appointment>(newAppointment);
+            _unitOfWork.Appointments.Add(newAppointmentEntity);
+            _unitOfWork.Commit();
+            return newAppointment;
+        }
+
+        public AppointmentDto UpdateAppointment(AppointmentDto updatedAppointment, int id)
+        {
+            var appointmentEntityToBeUpdated = _unitOfWork.Appointments.GetById(id);
+            appointmentEntityToBeUpdated.AppointmentDate = updatedAppointment.AppointmentDate;
+            appointmentEntityToBeUpdated.isApproved = updatedAppointment.isApproved;
+            appointmentEntityToBeUpdated.isReal = updatedAppointment.isReal;
+            var updatedEntity = _unitOfWork.Appointments.Update(appointmentEntityToBeUpdated);
+            _unitOfWork.Commit();
+            return _mapper.Map<Appointment, AppointmentDto>(updatedEntity);
+        }
+
+        public void DeleteAppointment(int id)
+        {
+            _unitOfWork.Appointments.Delete(id);
+            //delete fk's also (workOrder)
+            var workOrderList = _unitOfWork.WorkOrders.GetAll(x => x.AppointmentId == id && x.DeleteDate == null);
+            _unitOfWork.WorkOrders.DeleteAllEntities(workOrderList);
+            _unitOfWork.Commit();
+        }
+
+
     }
 }

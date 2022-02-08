@@ -10,5 +10,8 @@ namespace AutomativeRepairShop.Core.Services
     public interface IAppointmentService
     {
         IEnumerable<AppointmentDto> GetAllAppointments();
+        AppointmentDto AddAppointment(AppointmentDto newAppointment);
+        AppointmentDto UpdateAppointment(AppointmentDto updatedAppointment, int id);
+        void DeleteAppointment(int id);
     }
 }
