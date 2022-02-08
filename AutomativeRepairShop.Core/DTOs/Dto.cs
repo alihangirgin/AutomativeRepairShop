@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutomativeRepairShop.Core.DTOs
 {
-    public class WorkOrderDto:Dto
+    public abstract class Dto
     {
-        public int AppointmentId { get; set; }
+        public int? Id { get; set; }
+     
     }
 }

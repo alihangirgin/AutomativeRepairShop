@@ -26,7 +26,7 @@ namespace AutomativeRepairShop.Data.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.; Database=AutomativeRepairShopDB; Trusted_Connection=True;Integrated Security=true;");
+            //optionsBuilder.UseSqlServer("Server=.; Database=AutomativeRepairShopDB; Trusted_Connection=True;Integrated Security=true;");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder builder)

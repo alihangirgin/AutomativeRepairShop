@@ -5,8 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutomativeRepairShop.Business\AutomativeRepairShop.Business.csproj" />
+    <ProjectReference Include="..\AutomativeRepairShop.Core\AutomativeRepairShop.Core.csproj" />
+    <ProjectReference Include="..\AutomativeRepairShop.Data\AutomativeRepairShop.Data.csproj" />
   </ItemGroup>
 
 </Project>

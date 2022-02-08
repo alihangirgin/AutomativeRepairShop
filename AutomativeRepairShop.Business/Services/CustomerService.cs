@@ -29,6 +29,11 @@ namespace AutomativeRepairShop.Business.Services
             return customerListResource;
         }
 
+        public CustomerDto GetCustomerById(int id)
+        {
+            return _mapper.Map<Customer,CustomerDto> (_unitOfWork.Customers.GetById(id));
+        }
+
         public CustomerDto AddCustomer(CustomerDto newCustomer)
         {
             var newCustomerEntity = _mapper.Map<CustomerDto, Customer>(newCustomer);
@@ -55,6 +60,7 @@ namespace AutomativeRepairShop.Business.Services
             //delete fk's also (vehicle,appointment plus appointment's work order)
             var vehicleList = _unitOfWork.Vehicles.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
             var appointmentList = _unitOfWork.Appointments.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
+
 
             _unitOfWork.Vehicles.DeleteAllEntities(vehicleList);
             _unitOfWork.Appointments.DeleteAllEntities(appointmentList);

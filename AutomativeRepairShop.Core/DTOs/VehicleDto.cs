@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutomativeRepairShop.Core.DTOs
 {
-    public class VehicleDto
+    public class VehicleDto:Dto
     {
         public string LicensePlate { get; set; }
         public string Brand { get; set; }

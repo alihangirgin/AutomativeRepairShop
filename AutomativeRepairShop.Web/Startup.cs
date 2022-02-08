@@ -1,6 +1,13 @@
+using AutomativeRepairShop.Business.Services;
+using AutomativeRepairShop.Core.DTOs.Mappings;
+using AutomativeRepairShop.Core.Services;
+using AutomativeRepairShop.Core.UnitOfWork;
+using AutomativeRepairShop.Data.DataAccess;
+using AutomativeRepairShop.Data.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +30,16 @@ namespace AutomativeRepairShop.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("AppDatabase");
+            services.AddDbContext<ArsDbContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddAutoMapper(typeof(MapProfile));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IVehicleService, VehicleService>();
+            services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddScoped<IVehicleService, VehicleService>();
+
             services.AddControllersWithViews();
         }
 

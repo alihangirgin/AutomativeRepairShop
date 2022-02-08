@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutomativeRepairShop.Core.DTOs
 {
-    public class AppointmentDto
+    public class AppointmentDto:Dto
     {
         public int CustomerId { get; set; }
         public int VehicleId { get; set; }
