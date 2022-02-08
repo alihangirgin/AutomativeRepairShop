@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,30 @@ namespace AutomativeRepairShop.Data.Repositories
         public IEnumerable<TEntity> GetAll()
         {
             return _dbSet.Where(x=>x.DeleteDate !=null).ToList();
+        }
+
+        public void Delete(int id)
+        {
+            var entity = GetById(id);
+            entity.DeleteDate = DateTime.Now;
+            Update(entity);
+        }
+        public TEntity Update(TEntity entity)
+        {
+            var temp = GetById(entity.Id);
+            entity.UpdateDate = DateTime.Now;
+            _context.Entry(temp).CurrentValues.SetValues(entity);
+            return temp;
+        }
+
+        public TEntity GetById(int id)
+        {
+            return FirstOrDefault(x => x.Id == id);
+        }
+
+        public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> expression)
+        {
+            return _dbSet.FirstOrDefault(expression);
         }
 
 

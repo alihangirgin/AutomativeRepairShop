@@ -12,5 +12,8 @@ namespace AutomativeRepairShop.Core.Repositories
     {
         TEntity Add(TEntity entity);
         IEnumerable<TEntity> GetAll();
+        void Delete(int id);
+        TEntity Update(TEntity entity);
+        TEntity GetById(int id);
     }
 }
