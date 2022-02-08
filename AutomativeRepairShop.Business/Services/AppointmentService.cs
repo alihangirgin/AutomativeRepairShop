@@ -22,6 +22,12 @@ namespace AutomativeRepairShop.Business.Services
             _mapper = mapper;
         }
 
+        public AppointmentDto GetAppointmentById(int id)
+        {
+            var appointment = _unitOfWork.Appointments.GetById(id);
+            return _mapper.Map<Appointment, AppointmentDto>(appointment);
+        }
+
         public IEnumerable<AppointmentDto> GetAllAppointments()
         {
             var appointmentList = _unitOfWork.Appointments.GetAll();
