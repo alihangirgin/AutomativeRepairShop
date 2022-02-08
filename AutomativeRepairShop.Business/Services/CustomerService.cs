@@ -3,6 +3,7 @@ using AutomativeRepairShop.Core.DTOs;
 using AutomativeRepairShop.Core.Models;
 using AutomativeRepairShop.Core.Services;
 using AutomativeRepairShop.Core.UnitOfWork;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,23 @@ namespace AutomativeRepairShop.Business.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
+        public List<SelectListItem> GetCustomerSelectList()
+        {
+            var selectList = new List<SelectListItem>();
+            GetAllCustomers().ToList().ForEach(x =>
+            {
+                selectList.Add(new SelectListItem()
+                {
+                    Text = x.Name + " " + x.Surname ,
+                    Value = x.Id.ToString()
+                });
+
+            });
+
+            return selectList;
+        }
+
 
         public IEnumerable<CustomerDto> GetAllCustomers()
         {
@@ -58,12 +76,14 @@ namespace AutomativeRepairShop.Business.Services
         {
             _unitOfWork.Customers.Delete(id);
             //delete fk's also (vehicle,appointment plus appointment's work order)
-            var vehicleList = _unitOfWork.Vehicles.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
-            var appointmentList = _unitOfWork.Appointments.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
+            //var vehicleList = _unitOfWork.Vehicles.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
+            //var appointmentList = _unitOfWork.Appointments.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
+            _unitOfWork.Vehicles.DeleteAllByCustomerId(id);
 
 
-            _unitOfWork.Vehicles.DeleteAllEntities(vehicleList);
-            _unitOfWork.Appointments.DeleteAllEntities(appointmentList);
+            //_unitOfWork.Vehicles.DeleteAllEntities(vehicleList);
+            //_unitOfWork.Appointments.DeleteAllEntities(appointmentList);
+            //_unitOfWork.WorkOrders.DeleteAllEntities(x=>x.)
             _unitOfWork.Commit();
         }
     }

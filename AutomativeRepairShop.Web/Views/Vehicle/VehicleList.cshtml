@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AutomativeRepairShop.Core.DTOs.VehicleDto>
+
+@{
+    ViewData["Title"] = "VehicleList";
+}
+
+<h1>VehicleList</h1>
+
+<p>
+    <a asp-action="AddVehicle">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LicensePlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicensePlate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateVehicle", new {  id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteVehicle", new {  id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

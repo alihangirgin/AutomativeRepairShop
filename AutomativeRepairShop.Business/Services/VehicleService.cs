@@ -29,6 +29,11 @@ namespace AutomativeRepairShop.Business.Services
             return vehicleListResource;
         }
 
+        public VehicleDto GetVehicleById(int id)
+        {
+            var vehicle = _unitOfWork.Vehicles.GetById(id);
+            return _mapper.Map<Vehicle, VehicleDto>(vehicle);
+        }
 
         public VehicleDto AddVehicle(VehicleDto newVehicle)
         {

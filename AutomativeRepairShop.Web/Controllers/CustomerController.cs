@@ -12,11 +12,9 @@ namespace AutomativeRepairShop.Web.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
-        IMapper _mapper;
-        public CustomerController(ICustomerService customerService, IMapper mapper)
+        public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
-            _mapper = mapper;
         }
 
         public IActionResult Index()

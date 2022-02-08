@@ -15,6 +15,7 @@ namespace AutomativeRepairShop.Core.Repositories
         IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression);
         void Delete(int id);
         void DeleteAllEntities(IEnumerable<TEntity> entities);
+        void DeleteAllEntities(Expression<Func<TEntity, bool>> expression);
         TEntity Update(TEntity entity);
         TEntity GetById(int id);
     }

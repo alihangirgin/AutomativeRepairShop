@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace AutomativeRepairShop.Core.Repositories
 {
-    public interface IVehicleRepository: IRepository<Vehicle>
+    public interface IVehicleRepository : IRepository<Vehicle>
     {
+        void DeleteAllByCustomerId(int id);
     }
 }

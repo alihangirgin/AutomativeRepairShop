@@ -9,6 +9,7 @@ namespace AutomativeRepairShop.Core.Services
 {
     public interface IVehicleService
     {
+        VehicleDto GetVehicleById(int id);
         IEnumerable<VehicleDto> GetAllVehicles();
         VehicleDto AddVehicle(VehicleDto newVehicle);
         VehicleDto UpdateVehicle(VehicleDto updatedVehicle, int id);

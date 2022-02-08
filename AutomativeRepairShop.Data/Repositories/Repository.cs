@@ -14,7 +14,7 @@ namespace AutomativeRepairShop.Data.Repositories
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         private readonly DbContext _context;
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly DbSet<TEntity> _dbSet;
 
         public Repository(ArsDbContext context)
         {
@@ -51,6 +51,11 @@ namespace AutomativeRepairShop.Data.Repositories
             {
                 Delete(item.Id);
             }
+        }
+
+        public void DeleteAllEntities(Expression<Func<TEntity, bool>> expression)
+        {
+            _dbSet.Where(expression).ForEachAsync(x => x.DeleteDate = DateTime.Now);
         }
 
         public TEntity Update(TEntity entity)

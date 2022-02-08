@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace AutomativeRepairShop.Core.DTOs
         public string Model { get; set; }
         public int Year { get; set; }
         public int CustomerId { get; set; }
+        public List<SelectListItem> CustomerList { get; set; }
     }
 }
