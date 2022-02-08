@@ -56,6 +56,7 @@ namespace AutomativeRepairShop.Business.Services
                 isApproved=true
             };
             var addedAppointment= _unitOfWork.Appointments.Add(newAppointmentEntity);
+            _unitOfWork.Commit();
 
             //add workOrder
             var newWorkOrderEntity = new WorkOrder()

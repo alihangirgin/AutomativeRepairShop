@@ -14,12 +14,14 @@ namespace AutomativeRepairShop.Web.Controllers
         private readonly IAppointmentService _appointmentService;
         private readonly ICustomerService _customerService;
         private readonly IVehicleService _vehicleService;
+        private readonly IWorkOrderService _workOrderService;
         IMapper _mapper;
-        public AppointmentController(IAppointmentService appointmentService,ICustomerService customerService,IVehicleService vehicleService,  IMapper mapper)
+        public AppointmentController(IAppointmentService appointmentService,ICustomerService customerService,IVehicleService vehicleService,IWorkOrderService workOrderService,IMapper mapper)
         {
             _appointmentService = appointmentService;
             _customerService = customerService;
             _vehicleService = vehicleService;
+            _workOrderService = workOrderService;
             _mapper = mapper;
 
         }
@@ -69,6 +71,16 @@ namespace AutomativeRepairShop.Web.Controllers
         public IActionResult DeleteAppointment(int id)
         {
             _appointmentService.DeleteAppointment(id);
+            return RedirectToAction("AppointmentList");
+        }
+
+        public IActionResult ApproveAppointment(int id)
+        {
+            var workOrderResource = new WorkOrderDto()
+            {
+                AppointmentId = id
+            };
+            _workOrderService.AddWorkOrderWithAppointment(workOrderResource);
             return RedirectToAction("AppointmentList");
         }
 

@@ -18,6 +18,8 @@ namespace AutomativeRepairShop.Core.DTOs.Mappings
             CreateMap<VehicleDto, Vehicle>();
             CreateMap<Appointment, AppointmentDto>();
             CreateMap<AppointmentDto, Appointment>();
+            CreateMap<WorkOrder, WorkOrderDto>();
+            CreateMap<WorkOrderDto, WorkOrder>();
         }
     }
 }

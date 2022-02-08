@@ -3,6 +3,7 @@ using AutomativeRepairShop.Core.DTOs;
 using AutomativeRepairShop.Core.Models;
 using AutomativeRepairShop.Core.Services;
 using AutomativeRepairShop.Core.UnitOfWork;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,22 @@ namespace AutomativeRepairShop.Business.Services
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+        }
+
+        public List<SelectListItem> GetAppointmentSelectList()
+        {
+            var selectList = new List<SelectListItem>();
+            GetAllAppointments().ToList().ForEach(x =>
+            {
+                selectList.Add(new SelectListItem()
+                {
+                    Text = x.CustomerId + " " + x.VehicleId + " " + x.AppointmentDate,
+                    Value = x.Id.ToString()
+                });
+
+            });
+
+            return selectList;
         }
 
         public AppointmentDto GetAppointmentById(int id)

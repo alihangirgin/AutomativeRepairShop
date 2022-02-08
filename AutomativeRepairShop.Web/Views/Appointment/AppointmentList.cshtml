@@ -43,8 +43,9 @@
                 @Html.DisplayFor(modelItem => item.isApproved)
             </td>
             <td>
-                @Html.ActionLink("Edit", "UpdateAppointment", new {  id=item.Id  }) |
-                @Html.ActionLink("Delete", "DeleteAppointment", new {  id=item.Id })
+                @Html.ActionLink("Edit", "UpdateAppointment", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteAppointment", new { id = item.Id }) |
+                @Html.ActionLink("Approve", "ApproveAppointment", new { id = item.Id }) 
             </td>
         </tr>
 }

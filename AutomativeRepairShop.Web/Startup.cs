@@ -38,7 +38,7 @@ namespace AutomativeRepairShop.Web
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IAppointmentService, AppointmentService>();
-            services.AddScoped<IVehicleService, VehicleService>();
+            services.AddScoped<IWorkOrderService, WorkOrderService>();
 
             services.AddControllersWithViews();
         }
