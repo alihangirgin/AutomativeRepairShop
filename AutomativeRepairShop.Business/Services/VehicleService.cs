@@ -28,5 +28,37 @@ namespace AutomativeRepairShop.Business.Services
             var vehicleListResource = _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleDto>>(vehicleList);
             return vehicleListResource;
         }
+
+
+        public VehicleDto AddVehicle(VehicleDto newVehicle)
+        {
+            var newVehicleEntity = _mapper.Map<VehicleDto, Vehicle>(newVehicle);
+            _unitOfWork.Vehicles.Add(newVehicleEntity);
+            _unitOfWork.Commit();
+            return newVehicle;
+        }
+
+        public VehicleDto UpdateVehicle(VehicleDto updatedVehicle, int id)
+        {
+            var vehicleEntityToBeUpdated = _unitOfWork.Vehicles.GetById(id);
+            vehicleEntityToBeUpdated.LicensePlate = updatedVehicle.LicensePlate;
+            vehicleEntityToBeUpdated.Brand = updatedVehicle.Brand;
+            vehicleEntityToBeUpdated.Model = updatedVehicle.Model;
+            vehicleEntityToBeUpdated.Year = updatedVehicle.Year;
+            var updatedEntity = _unitOfWork.Vehicles.Update(vehicleEntityToBeUpdated);
+            _unitOfWork.Commit();
+            return _mapper.Map<Vehicle, VehicleDto>(updatedEntity);
+        }
+
+        public void DeleteVehicle(int id)
+        {
+            _unitOfWork.Vehicles.Delete(id);
+            //delete fk's also (appointment)
+            var appointmentList = _unitOfWork.Appointments.GetAll(x => x.VehicleId == id && x.DeleteDate == null);
+            _unitOfWork.Appointments.DeleteAllEntities(appointmentList);
+            _unitOfWork.Commit();
+        }
+
+
     }
 }

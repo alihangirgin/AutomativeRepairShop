@@ -52,9 +52,10 @@ namespace AutomativeRepairShop.Business.Services
         public void DeleteCustomer (int id)
         {
             _unitOfWork.Customers.Delete(id);
-            //delete fk's also (vehicle,appointment)
+            //delete fk's also (vehicle,appointment plus appointment's work order)
             var vehicleList = _unitOfWork.Vehicles.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
             var appointmentList = _unitOfWork.Appointments.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
+
             _unitOfWork.Vehicles.DeleteAllEntities(vehicleList);
             _unitOfWork.Appointments.DeleteAllEntities(appointmentList);
             _unitOfWork.Commit();
