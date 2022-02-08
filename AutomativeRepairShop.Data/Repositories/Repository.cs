@@ -31,7 +31,12 @@ namespace AutomativeRepairShop.Data.Repositories
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _dbSet.Where(x=>x.DeleteDate !=null).ToList();
+            return _dbSet.Where(x=>x.DeleteDate==null).ToList();
+        }
+
+        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression)
+        {
+            return _dbSet.Where(expression).ToList();
         }
 
         public void Delete(int id)
@@ -40,6 +45,14 @@ namespace AutomativeRepairShop.Data.Repositories
             entity.DeleteDate = DateTime.Now;
             Update(entity);
         }
+        public void DeleteAllEntities(IEnumerable<TEntity> entities)
+        {
+            foreach (var item in entities)
+            {
+                Delete(item.Id);
+            }
+        }
+
         public TEntity Update(TEntity entity)
         {
             var temp = GetById(entity.Id);

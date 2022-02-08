@@ -12,7 +12,9 @@ namespace AutomativeRepairShop.Core.Repositories
     {
         TEntity Add(TEntity entity);
         IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression);
         void Delete(int id);
+        void DeleteAllEntities(IEnumerable<TEntity> entities);
         TEntity Update(TEntity entity);
         TEntity GetById(int id);
     }
