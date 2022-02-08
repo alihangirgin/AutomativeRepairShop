@@ -1,4 +1,5 @@
 ﻿using AutomativeRepairShop.Core.DTOs;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace AutomativeRepairShop.Core.Services
 {
     public interface IVehicleService
     {
+        List<SelectListItem> GetVehicleSelectList();
         VehicleDto GetVehicleById(int id);
         IEnumerable<VehicleDto> GetAllVehicles();
         VehicleDto AddVehicle(VehicleDto newVehicle);

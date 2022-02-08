@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AutomativeRepairShop.Core.DTOs.AppointmentDto>
+
+@{
+    ViewData["Title"] = "AppointmentList";
+}
+
+<h1>AppointmentList</h1>
+
+<p>
+    <a asp-action="AddAppointment">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isApproved)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isApproved)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateAppointment", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "DeleteAppointment", new {  id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

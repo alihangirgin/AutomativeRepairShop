@@ -16,6 +16,8 @@ namespace AutomativeRepairShop.Core.DTOs.Mappings
             CreateMap<CustomerDto, Customer>();
             CreateMap<Vehicle, VehicleDto>();
             CreateMap<VehicleDto, Vehicle>();
+            CreateMap<Appointment, AppointmentDto>();
+            CreateMap<AppointmentDto, Appointment>();
         }
     }
 }
