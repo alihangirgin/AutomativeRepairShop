@@ -1,6 +1,7 @@
 ﻿using AutomativeRepairShop.Core.Models;
 using AutomativeRepairShop.Core.Repositories;
 using AutomativeRepairShop.Data.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

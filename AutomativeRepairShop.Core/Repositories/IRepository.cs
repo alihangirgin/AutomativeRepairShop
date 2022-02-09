@@ -12,6 +12,8 @@ namespace AutomativeRepairShop.Core.Repositories
     {
         TEntity Add(TEntity entity);
         IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(string include);
+        IEnumerable<TEntity> GetAll(string includeOne, string includeTwo);
         IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression);
         void Delete(int id);
         void DeleteAllEntities(IEnumerable<TEntity> entities);

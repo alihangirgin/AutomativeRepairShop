@@ -10,5 +10,9 @@ namespace AutomativeRepairShop.Core.DTOs
     public class WorkOrderDto:Dto
     {
         public int AppointmentId { get; set; }
+        public int VehicleId { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public string CustomerName { get; set; }
+        public string VehicleName { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace AutomativeRepairShop.Core.DTOs
     public class WorkOrderWithoutAppointmentDto:WorkOrderDto
     {
         public int CustomerId { get; set; }
-        public int VehicleId { get; set; }
+        //public int VehicleId { get; set; }
         public List<SelectListItem> CustomerList { get; set; }
         public List<SelectListItem> VehicleList { get; set; }
     }

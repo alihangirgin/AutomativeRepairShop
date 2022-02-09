@@ -34,6 +34,15 @@ namespace AutomativeRepairShop.Data.Repositories
             return _dbSet.Where(x=>x.DeleteDate==null).ToList();
         }
 
+        public IEnumerable<TEntity> GetAll(string include)
+        {
+            return _dbSet.Where(x => x.DeleteDate == null).Include(include).ToList();
+        }
+
+        public IEnumerable<TEntity> GetAll(string includeOne, string includeTwo)
+        {
+            return _dbSet.Where(x => x.DeleteDate == null).Include(includeOne).Include(includeTwo).ToList();
+        }
         public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression)
         {
             return _dbSet.Where(expression).ToList();
@@ -75,7 +84,6 @@ namespace AutomativeRepairShop.Data.Repositories
         {
             return _dbSet.FirstOrDefault(expression);
         }
-
 
     }
 }

@@ -14,6 +14,8 @@ namespace AutomativeRepairShop.Core.DTOs
         public DateTime? AppointmentDate { get; set; }
         public bool isApproved { get; set; }
         public bool isReal { get; set; }
+        public string CustomerName { get; set; }
+        public string VehicleName { get; set; }
         public List<SelectListItem> CustomerList { get; set; }
         public List<SelectListItem> VehicleList { get; set; }
     }

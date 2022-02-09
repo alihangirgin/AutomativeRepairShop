@@ -47,7 +47,7 @@ namespace AutomativeRepairShop.Business.Services
 
         public IEnumerable<AppointmentDto> GetAllAppointments()
         {
-            var appointmentList = _unitOfWork.Appointments.GetAll();
+            var appointmentList = _unitOfWork.Appointments.GetAll("Customer", "Vehicle");
             var appointmentListResource = _mapper.Map<IEnumerable<Appointment>, IEnumerable<AppointmentDto>>(appointmentList);
             return appointmentListResource;
         }

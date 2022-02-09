@@ -9,5 +9,6 @@ namespace AutomativeRepairShop.Core.Repositories
 {
     public interface IWorkOrderRepository:IRepository<WorkOrder>
     {
+        IEnumerable<WorkOrder> GetAllWithIncludes();
     }
 }

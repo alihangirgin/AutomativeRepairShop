@@ -30,7 +30,7 @@ namespace AutomativeRepairShop.Business.Services
             {
                 selectList.Add(new SelectListItem()
                 {
-                    Text = x.Brand + " " + x.Model + "" + x.Year + "" + x.LicensePlate,
+                    Text = x.Brand + " " + x.Model + " " + x.Year + " " + x.LicensePlate,
                     Value = x.Id.ToString()
                 });
 
@@ -41,7 +41,7 @@ namespace AutomativeRepairShop.Business.Services
 
         public IEnumerable<VehicleDto> GetAllVehicles()
         {
-            var vehicleList = _unitOfWork.Vehicles.GetAll();
+            var vehicleList = _unitOfWork.Vehicles.GetAll("Customer");
             var vehicleListResource = _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleDto>>(vehicleList);
             return vehicleListResource;
         }

@@ -26,7 +26,8 @@ namespace AutomativeRepairShop.Business.Services
 
         public IEnumerable<WorkOrderDto> GetAllWorkOrders()
         {
-            var workOrderList = _unitOfWork.WorkOrders.GetAll();
+            //var workOrderList = _unitOfWork.WorkOrders.GetAll("Appointment");
+            var workOrderList = _unitOfWork.WorkOrders.GetAllWithIncludes();
             var workOrderListResource = _mapper.Map<IEnumerable<WorkOrder>, IEnumerable<WorkOrderDto>>(workOrderList);
             return workOrderListResource;
         }

@@ -14,6 +14,7 @@ namespace AutomativeRepairShop.Core.DTOs
         public string Model { get; set; }
         public int Year { get; set; }
         public int CustomerId { get; set; }
+        public string CustomerName { get; set; }
         public List<SelectListItem> CustomerList { get; set; }
     }
 }
