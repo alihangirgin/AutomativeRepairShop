@@ -9,5 +9,6 @@ namespace AutomativeRepairShop.Core.Repositories
 {
     public interface IAppointmentRepository:IRepository<Appointment>
     {
+        IEnumerable<Appointment> GetAllRealAppointments(string includeOne, string includeTwo);
     }
 }

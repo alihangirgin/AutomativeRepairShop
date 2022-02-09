@@ -16,5 +16,9 @@ namespace AutomativeRepairShop.Data.Repositories
         {
 
         }
+        public IEnumerable<Appointment> GetAllRealAppointments(string includeOne, string includeTwo)
+        {
+            return _dbSet.Where(x => x.DeleteDate == null && x.AppointmentDate !=null).Include(includeOne).Include(includeTwo).ToList();
+        }
     }
 }
