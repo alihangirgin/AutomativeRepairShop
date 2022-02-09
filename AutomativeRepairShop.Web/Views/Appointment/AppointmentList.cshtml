@@ -4,11 +4,16 @@
     ViewData["Title"] = "AppointmentList";
 }
 
-<h1>AppointmentList</h1>
+<div class="row">
+    <div class="col-md-2">
+        <h4>Randevular</h4>
+    </div>
+    <div class="col-md-10">
+        <button type="submit" onclick="location.href='@Url.Action("AddAppointment", "Appointment")'" class="btn btn-outline-primary">Randevu Ekle</button>
+    </div>
+</div>
+<br>
 
-<p>
-    <a asp-action="AddAppointment">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -28,26 +33,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppointmentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isApproved)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "UpdateAppointment", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "DeleteAppointment", new { id = item.Id }) |
-                @Html.ActionLink("Approve", "ApproveAppointment", new { id = item.Id }) 
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isApproved)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Randevuyu Güncelle", "UpdateAppointment", new { id = item.Id }) |
+                    @Html.ActionLink("Randevuyu Sil", "DeleteAppointment", new { id = item.Id }) |
+                    @Html.ActionLink("Randevuyu Onayla", "ApproveAppointment", new { id = item.Id })*@
+                    <button type="submit" onclick="location.href='@Url.Action("UpdateAppointment", "Appointment", new { id = item.Id })'" class="btn btn-outline-info">Randevuyu Güncelle</button>
+                    <button type="submit" onclick="location.href='@Url.Action("DeleteAppointment", "Appointment", new { id = item.Id })'" class="btn btn-outline-danger">Randevuyu Sil</button>
+                    <button type="submit" onclick="location.href='@Url.Action("ApproveAppointment", "Appointment", new { id = item.Id })'" class="btn btn-outline-success">Randevuyu Onayla</button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

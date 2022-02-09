@@ -31,7 +31,7 @@ namespace AutomativeRepairShop.Web
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("AppDatabase");
-            services.AddDbContext<ArsDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ArsDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
 
             services.AddAutoMapper(typeof(MapProfile));
             services.AddScoped<IUnitOfWork, UnitOfWork>();

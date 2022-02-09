@@ -4,11 +4,15 @@
     ViewData["Title"] = "VehicleList";
 }
 
-<h1>VehicleList</h1>
-
-<p>
-    <a asp-action="AddVehicle">Create New</a>
-</p>
+<div class="row">
+    <div class="col-md-2">
+        <h4>Araçlar</h4>
+    </div>
+    <div class="col-md-10">
+        <button type="submit" onclick="location.href='@Url.Action("AddVehicle", "Vehicle")'" class="btn btn-outline-primary">Araç Ekle</button>
+    </div>
+</div>
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -49,8 +53,10 @@
                 @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "UpdateVehicle", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "DeleteVehicle", new {  id=item.Id })
+                @*@Html.ActionLink("Araç Güncelle", "UpdateVehicle", new { id = item.Id }) |
+                @Html.ActionLink("Araç Sil", "DeleteVehicle", new { id = item.Id })*@
+                <button type="submit" onclick="location.href='@Url.Action("UpdateVehicle", "Vehicle", new { id = item.Id })'" class="btn btn-outline-info">Araç Güncelle</button>
+                <button type="submit" onclick="location.href='@Url.Action("DeleteVehicle", "Vehicle", new { id = item.Id })'" class="btn btn-outline-danger">Araç Sil</button>
             </td>
         </tr>
 }

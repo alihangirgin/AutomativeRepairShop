@@ -4,17 +4,18 @@
     ViewData["Title"] = "WorkOrderList";
 }
 
-<h1>WorkOrderList</h1>
-
-<p>
-    <a asp-action="AddWorkOrder">Create New</a>
-</p>
+<div class="row">
+    <div class="col-md-2">
+        <h4>İş Emirleri</h4>
+    </div>
+    <div class="col-md-10">
+        <button type="submit" onclick="location.href='@Url.Action("AddWorkOrder", "WorkOrder")'" class="btn btn-outline-primary">İş Emri Ekle</button>
+    </div>
+</div>
+<br>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AppointmentId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerName)
             </th>
@@ -31,19 +32,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AppointmentId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VehicleName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AppointmentDate)
+               @Html.DisplayFor(modelItem => item.AppointmentDate)
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteWorkOrder", new { id = item.Id })
+                @*@Html.ActionLink("İş Emrini Sil", "DeleteWorkOrder", new { id = item.Id })*@
+                <button type="submit" onclick="location.href='@Url.Action("DeleteWorkOrder", "WorkOrder", new { id = item.Id })'" class="btn btn-outline-info">İş Emrini Sil</button>
             </td>
         </tr>
 }

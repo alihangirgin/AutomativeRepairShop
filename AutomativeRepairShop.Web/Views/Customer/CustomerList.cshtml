@@ -4,11 +4,15 @@
     ViewData["Title"] = "CustomerList";
 }
 
-<h1>CustomerList</h1>
-
-<p>
-    <a asp-action="AddCustomer">Create New</a>
-</p>
+<div class="row">
+    <div class="col-md-2">
+        <h4>Müşteriler</h4>
+    </div>
+    <div class="col-md-10">
+        <button type="submit" onclick="location.href='@Url.Action("AddCustomer", "Customer")'" class="btn btn-outline-primary">Müşteri Ekle</button>
+    </div>
+</div>
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -43,8 +47,8 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Edit", "UpdateCustomer", new {  id=item.Id  }) |
-                @Html.ActionLink("Delete", "DeleteCustomer", new { id=item.Id })
+                <button type="submit" onclick="location.href='@Url.Action("UpdateCustomer", "Customer", new { id = item.Id })'" class="btn btn-outline-info">Müşteri Güncelle</button>
+                <button type="submit" onclick="location.href='@Url.Action("DeleteCustomer", "Customer", new { id = item.Id })'" class="btn btn-outline-danger">Müşteri Sil</button>
             </td>
         </tr>
 }

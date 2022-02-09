@@ -4,9 +4,8 @@
     ViewData["Title"] = "UpdateAppointment";
 }
 
-<h1>UpdateAppointment</h1>
 
-<h4>AppointmentDto</h4>
+<h4>Randevu Güncelle</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,14 +32,16 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                @*<input type="submit" value="Save" class="btn btn-primary" />*@
+                <button type="submit" class="btn btn-outline-primary">Randevu Güncelle</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @*<a asp-action="AppointmentList">Randevulara Dön</a>*@
+    <button type="submit" onclick="location.href='@Url.Action("AppointmentList", "Appointment")'" class="btn btn-outline-secondary">Randevulara Dön</button>
 </div>
 
 @section Scripts {
