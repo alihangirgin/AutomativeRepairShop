@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutomativeRepairShop.Business.Services
 {
-    public class CustomerService:ICustomerService
+    public class CustomerService : ICustomerService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -30,7 +30,7 @@ namespace AutomativeRepairShop.Business.Services
             {
                 selectList.Add(new SelectListItem()
                 {
-                    Text = x.Name + " " + x.Surname ,
+                    Text = x.Name + " " + x.Surname,
                     Value = x.Id.ToString()
                 });
 
@@ -49,7 +49,7 @@ namespace AutomativeRepairShop.Business.Services
 
         public CustomerDto GetCustomerById(int id)
         {
-            return _mapper.Map<Customer,CustomerDto> (_unitOfWork.Customers.GetById(id));
+            return _mapper.Map<Customer, CustomerDto>(_unitOfWork.Customers.GetById(id));
         }
 
         public CustomerDto AddCustomer(CustomerDto newCustomer)
@@ -72,18 +72,24 @@ namespace AutomativeRepairShop.Business.Services
             return _mapper.Map<Customer, CustomerDto>(updatedEntity);
         }
 
-        public void DeleteCustomer (int id)
+        public void DeleteCustomer(int id)
         {
+            var vehicleList = _unitOfWork.Vehicles.GetAllWithIncludes(id).FirstOrDefault();
+            if (vehicleList != null)
+            {
+                foreach (var appointment in vehicleList.Appointments)
+                {
+                    if (appointment != null)
+                    {
+                        foreach (var workOrder in appointment.WorkOrders)
+                        {
+                            _unitOfWork.WorkOrders.Delete(workOrder.Id);
+                        }
+                        _unitOfWork.Appointments.Delete(appointment.Id);
+                    }
+                }
+            }
             _unitOfWork.Customers.Delete(id);
-            //delete fk's also (vehicle,appointment plus appointment's work order)
-            //var vehicleList = _unitOfWork.Vehicles.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
-            //var appointmentList = _unitOfWork.Appointments.GetAll(x => x.CustomerId == id && x.DeleteDate == null);
-            _unitOfWork.Vehicles.DeleteAllByCustomerId(id);
-
-
-            //_unitOfWork.Vehicles.DeleteAllEntities(vehicleList);
-            //_unitOfWork.Appointments.DeleteAllEntities(appointmentList);
-            //_unitOfWork.WorkOrders.DeleteAllEntities(x=>x.)
             _unitOfWork.Commit();
         }
     }

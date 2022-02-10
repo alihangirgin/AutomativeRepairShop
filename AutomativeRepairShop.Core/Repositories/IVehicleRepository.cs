@@ -9,6 +9,6 @@ namespace AutomativeRepairShop.Core.Repositories
 {
     public interface IVehicleRepository : IRepository<Vehicle>
     {
-        void DeleteAllByCustomerId(int id);
+        IEnumerable<Vehicle> GetAllWithIncludes(int id);
     }
 }

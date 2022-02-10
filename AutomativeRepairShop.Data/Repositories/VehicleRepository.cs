@@ -17,28 +17,12 @@ namespace AutomativeRepairShop.Data.Repositories
         {
 
         }
-
-        public void DeleteAllByCustomerId(int id)
+        public IEnumerable<Vehicle> GetAllWithIncludes(int id)
         {
-            _dbSet.Where(x => x.CustomerId == id)
-                .Include(x => x.Appointments)
-                .ThenInclude(x => x.WorkOrders)
-                .ForEachAsync(vehicle =>
-                {
-                    vehicle.DeleteDate = DateTime.Now;
-
-                    foreach (var appointment in vehicle.Appointments )
-                    {
-                        appointment.DeleteDate = DateTime.Now;
-
-                        foreach (var workOrder in appointment.WorkOrders)
-                        {
-                            workOrder.DeleteDate = DateTime.Now;
-                        }
-                    }
-
-                    
-                });
+            return _dbSet.Where(x => x.CustomerId == id)
+               .Include(x => x.Appointments)
+               .ThenInclude(x => x.WorkOrders).ToList();
         }
+
     }
 }
