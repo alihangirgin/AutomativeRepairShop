@@ -63,3 +63,5 @@ It was created to insert, update, delete and list WorkOrders.
 - WorkOrder/AddWorkOrder-> to create a new WorkOrder
 - WorkOrder/DeleteWorkOrder-> to delete a WorkOrder
 - WorkOrder/WorkOrderList-> to list all WorkOrders from the database
+## Todo
+ - Try,Catch ve Loglama
