@@ -5,7 +5,7 @@ Bu projede bir otomotiv tamirhanesinin günlük işlemlerinin bir kısmının .N
   - Clone from Github and open with Visual Studio
   - Open Package Manager Console in Visual Studio
   - Type the following command: update-database 
-  - ConnectionString is located in appsettings.json in MovieStore.Web Layer
+  - ConnectionString is located in appsettings.json in AutomativeRepairShop.Web Layer
   
   ## Proje Mimarisi
 N-Tier mimari kullanıldı, projede 4 katman bulunmaktadır.
