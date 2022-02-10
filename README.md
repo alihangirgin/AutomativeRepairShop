@@ -1,5 +1,6 @@
 # Automative Repair Shop
 Bu projede bir otomotiv tamirhanesinin günlük işlemlerinin bir kısmının .Net Core Web uygulaması ile süreç olarak dijitalleştirilmesi hedeflenmektedir.
+- .Net Versiyon 5.0
 ## Database Configuration
   - Clone from Github and open with Visual Studio
   - Open Package Manager Console in Visual Studio
