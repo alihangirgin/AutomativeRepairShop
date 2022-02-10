@@ -47,9 +47,6 @@ namespace AutomativeRepairShop.Data.Migrations
                     b.Property<bool>("isApproved")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("isReal")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -57,6 +54,34 @@ namespace AutomativeRepairShop.Data.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AppointmentDate = new DateTime(2022, 2, 10, 18, 25, 33, 622, DateTimeKind.Local).AddTicks(4833),
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 623, DateTimeKind.Local).AddTicks(704),
+                            CustomerId = 1,
+                            VehicleId = 1,
+                            isApproved = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 623, DateTimeKind.Local).AddTicks(1069),
+                            CustomerId = 2,
+                            VehicleId = 2,
+                            isApproved = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AppointmentDate = new DateTime(2022, 2, 10, 18, 25, 33, 623, DateTimeKind.Local).AddTicks(1073),
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 623, DateTimeKind.Local).AddTicks(1075),
+                            CustomerId = 2,
+                            VehicleId = 3,
+                            isApproved = true
+                        });
                 });
 
             modelBuilder.Entity("AutomativeRepairShop.Core.Models.Customer", b =>
@@ -98,6 +123,53 @@ namespace AutomativeRepairShop.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(1236),
+                            Email = "mulayimsert@gmail.com",
+                            Name = "Mülayim",
+                            PhoneNumber = "12345",
+                            Surname = "Sert"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(1243),
+                            Email = "keanureeves@gmail.com",
+                            Name = "Keanu",
+                            PhoneNumber = "12345",
+                            Surname = "Reeves"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(1244),
+                            Email = "donaldtrump@gmail.com",
+                            Name = "Donald",
+                            PhoneNumber = "12345",
+                            Surname = "Trump"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(1246),
+                            Email = "testerenecmi@gmail.com",
+                            Name = "Testere",
+                            PhoneNumber = "12345",
+                            Surname = "Necmi"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(1247),
+                            Email = "bugsbunny@gmail.com",
+                            Name = "Bugs",
+                            PhoneNumber = "12345",
+                            Surname = "Bunny"
+                        });
                 });
 
             modelBuilder.Entity("AutomativeRepairShop.Core.Models.Vehicle", b =>
@@ -142,6 +214,48 @@ namespace AutomativeRepairShop.Data.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Vehicles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "Audi",
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(4310),
+                            CustomerId = 1,
+                            LicensePlate = "34 ABC 123",
+                            Model = "A3 Sedan",
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Brand = "Fiat",
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(4318),
+                            CustomerId = 2,
+                            LicensePlate = "34 DSA 123",
+                            Model = "Egea",
+                            Year = 2018
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Brand = "Honda",
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(4320),
+                            CustomerId = 2,
+                            LicensePlate = "34 FSD 123",
+                            Model = "City",
+                            Year = 2017
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Brand = "Mercedes",
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(4322),
+                            CustomerId = 3,
+                            LicensePlate = "34 HDS 123",
+                            Model = "A Serisi",
+                            Year = 2021
+                        });
                 });
 
             modelBuilder.Entity("AutomativeRepairShop.Core.Models.WorkOrder", b =>
@@ -168,6 +282,20 @@ namespace AutomativeRepairShop.Data.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("WorkOrders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AppointmentId = 2,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(6121)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AppointmentId = 3,
+                            CreateDate = new DateTime(2022, 2, 10, 18, 25, 33, 624, DateTimeKind.Local).AddTicks(6128)
+                        });
                 });
 
             modelBuilder.Entity("AutomativeRepairShop.Core.Models.Appointment", b =>

@@ -81,7 +81,7 @@ namespace AutomativeRepairShop.Web.Controllers
                 AppointmentId = id
             };
             _workOrderService.AddWorkOrderWithAppointment(workOrderResource);
-            return RedirectToAction("AppointmentList");
+            return RedirectToAction("WorkOrderList", "WorkOrder");
         }
 
     }

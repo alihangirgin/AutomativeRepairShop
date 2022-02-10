@@ -16,14 +16,12 @@ namespace AutomativeRepairShop.Data.Mapping
             base.Configure(builder);
             builder.Property(x => x.AppointmentDate);
             builder.Property(x => x.isApproved);
-            builder.Property(x => x.isReal);
 
             builder.HasOne(x => x.Customer)
                 .WithMany(x => x.Appointments)
                 .HasForeignKey(x => x.CustomerId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.NoAction);
-
             builder.HasOne(x => x.Vehicle)
                 .WithMany(x => x.Appointments)
                 .HasForeignKey(x => x.VehicleId)

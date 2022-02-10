@@ -1,5 +1,6 @@
 ﻿using AutomativeRepairShop.Core.Models;
 using AutomativeRepairShop.Data.Mapping;
+using AutomativeRepairShop.Data.Seeds;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,11 @@ namespace AutomativeRepairShop.Data.DataAccess
             builder.ApplyConfiguration(new CustomerMap());
             builder.ApplyConfiguration(new VehicleMap());
             builder.ApplyConfiguration(new WorkOrderMap());
+
+            builder.ApplyConfiguration(new AppointmentSeed(new int[] { 1, 2, 3 }));
+            builder.ApplyConfiguration(new CustomerSeed(new int[] { 1, 2, 3, 4 , 5}));
+            builder.ApplyConfiguration(new VehicleSeed(new int[] { 1, 2, 3, 4 }));
+            builder.ApplyConfiguration(new WorkOrderSeed(new int[] { 1, 2 }));
 
         }
 

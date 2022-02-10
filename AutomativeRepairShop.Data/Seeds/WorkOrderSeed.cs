@@ -20,7 +20,8 @@ namespace AutomativeRepairShop.Data.Seeds
 
         public void Configure(EntityTypeBuilder<WorkOrder> builder)
         {
-
+            builder.HasData(new WorkOrder { Id = _ids[0], AppointmentId=2, CreateDate= DateTime.Now },
+                new WorkOrder { Id = _ids[1], AppointmentId = 3, CreateDate = DateTime.Now });
         }
     }
 }

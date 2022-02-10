@@ -12,7 +12,6 @@ namespace AutomativeRepairShop.Core.Models
         public int VehicleId { get; set; }
         public DateTime? AppointmentDate { get; set; }
         public bool isApproved { get; set; }
-        public bool isReal { get; set; }
 
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
         public virtual Vehicle Vehicle { get; set; }

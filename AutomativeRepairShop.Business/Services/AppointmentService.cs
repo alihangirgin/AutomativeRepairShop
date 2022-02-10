@@ -65,7 +65,6 @@ namespace AutomativeRepairShop.Business.Services
             var appointmentEntityToBeUpdated = _unitOfWork.Appointments.GetById(id);
             appointmentEntityToBeUpdated.AppointmentDate = updatedAppointment.AppointmentDate;
             appointmentEntityToBeUpdated.isApproved = updatedAppointment.isApproved;
-            appointmentEntityToBeUpdated.isReal = updatedAppointment.isReal;
             var updatedEntity = _unitOfWork.Appointments.Update(appointmentEntityToBeUpdated);
             _unitOfWork.Commit();
             return _mapper.Map<Appointment, AppointmentDto>(updatedEntity);

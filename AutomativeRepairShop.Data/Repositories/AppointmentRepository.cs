@@ -20,5 +20,6 @@ namespace AutomativeRepairShop.Data.Repositories
         {
             return _dbSet.Where(x => x.DeleteDate == null && x.AppointmentDate !=null).Include(includeOne).Include(includeTwo).ToList();
         }
+
     }
 }

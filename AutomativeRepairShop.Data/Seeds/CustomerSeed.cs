@@ -20,7 +20,11 @@ namespace AutomativeRepairShop.Data.Seeds
 
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
-
+            builder.HasData(new Customer { Id = _ids[0], Name = "Mülayim", Surname = "Sert", Email = "mulayimsert@gmail.com", PhoneNumber = "12345", CreateDate = DateTime.Now },
+            new Customer { Id = _ids[1], Name = "Keanu", Surname = "Reeves", Email = "keanureeves@gmail.com", PhoneNumber = "12345", CreateDate = DateTime.Now },
+            new Customer { Id = _ids[2], Name = "Donald", Surname = "Trump", Email = "donaldtrump@gmail.com", PhoneNumber = "12345", CreateDate = DateTime.Now },
+            new Customer { Id = _ids[3], Name = "Testere", Surname = "Necmi", Email = "testerenecmi@gmail.com", PhoneNumber = "12345", CreateDate = DateTime.Now },
+            new Customer { Id = _ids[4], Name = "Bugs", Surname = "Bunny", Email = "bugsbunny@gmail.com", PhoneNumber = "12345", CreateDate = DateTime.Now });
         }
     }
 }

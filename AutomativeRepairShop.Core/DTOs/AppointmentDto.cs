@@ -20,7 +20,6 @@ namespace AutomativeRepairShop.Core.DTOs
 
         [DisplayName("Randevu Onayı")]
         public bool isApproved { get; set; }
-        public bool isReal { get; set; }
 
         [DisplayName("Müşteri Adı")]
         public string CustomerName { get; set; }

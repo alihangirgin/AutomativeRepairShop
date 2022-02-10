@@ -49,11 +49,10 @@ namespace AutomativeRepairShop.Business.Services
 
         public WorkOrderDto AddWorkOrderWithoutAppointment(WorkOrderWithoutAppointmentDto newWorkOrder)
         {
-            //add appointment(isReal=0)
+            //add appointment(without AppointmentDate)
             var newAppointmentEntity = new Appointment() {
                 CustomerId = newWorkOrder.CustomerId,
                 VehicleId = newWorkOrder.VehicleId,
-                isReal=false,
                 isApproved=true
             };
             var addedAppointment= _unitOfWork.Appointments.Add(newAppointmentEntity);
@@ -71,6 +70,13 @@ namespace AutomativeRepairShop.Business.Services
 
         public void DeleteWorkOrder(int id)
         {
+            //remove approve for work order related appointment
+            var workOrder = _unitOfWork.WorkOrders.GetById(id);
+            var appointment = _unitOfWork.Appointments.GetById(workOrder.AppointmentId);
+            appointment.isApproved = false;
+            _appointmentService.UpdateAppointment(_mapper.Map<Appointment, AppointmentDto>(appointment), appointment.Id);
+
+            //then delete work order
             _unitOfWork.WorkOrders.Delete(id);
             _unitOfWork.Commit();
         }
