@@ -71,23 +71,27 @@ namespace AutomativeRepairShop.Business.Services
             _unitOfWork.Commit();
             return _mapper.Map<Customer, CustomerDto>(updatedEntity);
         }
-        
+
         public void DeleteCustomer(int id)
         {
             //delete fk's also
-            var vehicleList = _unitOfWork.Vehicles.GetAllWithIncludes(id).FirstOrDefault();
+            var vehicleList = _unitOfWork.Vehicles.GetAllWithIncludes(id);
             if (vehicleList != null)
             {
-                foreach (var appointment in vehicleList.Appointments)
+                foreach (var vehicle in vehicleList)
                 {
-                    if (appointment != null)
+                    foreach (var appointment in vehicle.Appointments)
                     {
-                        foreach (var workOrder in appointment.WorkOrders)
+                        if (appointment != null)
                         {
-                            _unitOfWork.WorkOrders.Delete(workOrder.Id);
+                            foreach (var workOrder in appointment.WorkOrders)
+                            {
+                                _unitOfWork.WorkOrders.Delete(workOrder.Id);
+                            }
+                            _unitOfWork.Appointments.Delete(appointment.Id);
                         }
-                        _unitOfWork.Appointments.Delete(appointment.Id);
                     }
+                    _unitOfWork.Vehicles.Delete(vehicle.Id);
                 }
             }
             _unitOfWork.Customers.Delete(id);
