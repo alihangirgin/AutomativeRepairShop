@@ -53,8 +53,6 @@
                 @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
-                @*@Html.ActionLink("Araç Güncelle", "UpdateVehicle", new { id = item.Id }) |
-                @Html.ActionLink("Araç Sil", "DeleteVehicle", new { id = item.Id })*@
                 <button type="submit" onclick="location.href='@Url.Action("UpdateVehicle", "Vehicle", new { id = item.Id })'" class="btn btn-outline-info">Araç Güncelle</button>
                 <button type="submit" onclick="location.href='@Url.Action("DeleteVehicle", "Vehicle", new { id = item.Id })'" class="btn btn-outline-danger">Araç Sil</button>
             </td>

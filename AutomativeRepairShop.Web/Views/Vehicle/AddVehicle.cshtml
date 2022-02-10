@@ -36,7 +36,6 @@
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @*<input type="submit" value="Create" class="btn btn-primary" />*@
                 <button type="submit" class="btn btn-outline-primary">Araç Ekle</button>
             </div>
         </form>
@@ -44,7 +43,6 @@
 </div>
 
 <div>
-    @*<a asp-action="VehicleList">Araçlara Dön</a>*@
     <button type="submit" onclick="location.href='@Url.Action("VehicleList", "Vehicle")'" class="btn btn-outline-secondary">Araçlara Dön</button>
 </div>
 

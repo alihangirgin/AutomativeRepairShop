@@ -41,7 +41,6 @@
                @Html.DisplayFor(modelItem => item.AppointmentDate)
             </td>
             <td>
-                @*@Html.ActionLink("İş Emrini Sil", "DeleteWorkOrder", new { id = item.Id })*@
                 <button type="submit" onclick="location.href='@Url.Action("DeleteWorkOrder", "WorkOrder", new { id = item.Id })'" class="btn btn-outline-info">İş Emrini Sil</button>
             </td>
         </tr>

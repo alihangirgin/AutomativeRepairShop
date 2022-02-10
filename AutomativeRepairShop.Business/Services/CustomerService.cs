@@ -71,9 +71,10 @@ namespace AutomativeRepairShop.Business.Services
             _unitOfWork.Commit();
             return _mapper.Map<Customer, CustomerDto>(updatedEntity);
         }
-
+        
         public void DeleteCustomer(int id)
         {
+            //delete fk's also
             var vehicleList = _unitOfWork.Vehicles.GetAllWithIncludes(id).FirstOrDefault();
             if (vehicleList != null)
             {

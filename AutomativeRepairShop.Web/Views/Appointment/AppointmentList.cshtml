@@ -49,9 +49,6 @@
                     @Html.DisplayFor(modelItem => item.isApproved)
                 </td>
                 <td>
-                    @*@Html.ActionLink("Randevuyu Güncelle", "UpdateAppointment", new { id = item.Id }) |
-                    @Html.ActionLink("Randevuyu Sil", "DeleteAppointment", new { id = item.Id }) |
-                    @Html.ActionLink("Randevuyu Onayla", "ApproveAppointment", new { id = item.Id })*@
                     <button type="submit" onclick="location.href='@Url.Action("UpdateAppointment", "Appointment", new { id = item.Id })'" class="btn btn-outline-info">Randevuyu Güncelle</button>
                     <button type="submit" onclick="location.href='@Url.Action("DeleteAppointment", "Appointment", new { id = item.Id })'" class="btn btn-outline-danger">Randevuyu Sil</button>
                     <button type="submit" onclick="location.href='@Url.Action("ApproveAppointment", "Appointment", new { id = item.Id })'" class="btn btn-outline-success">Randevuyu Onayla</button>
